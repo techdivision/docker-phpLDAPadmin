@@ -9,5 +9,8 @@ RUN apk -U add php7-ldap php7-gettext && \
     rm -rf /tmp/master.zip /var/lib/nginx/html && \
     mv /var/lib/nginx/phpLDAPadmin-master /var/lib/nginx/html
 
+# copy env var based config
+COPY config.php /var/lib/nginx/html/config/
+
 # run default cmd
 CMD ["/usr/bin/supervisord", "--nodaemon"]
