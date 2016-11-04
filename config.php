@@ -15,9 +15,9 @@ $servers = new Datastore();
 
 // define new ldap server
 $servers->newServer('ldap_pla');
-$servers->setValue('server', 'base', array(''));
+$servers->setValue('server', 'base', array(isset($_SERVER["PHPLDAPADMIN_BASE"]) ? $_SERVER["PHPLDAPADMIN_BASE"] : ''));
 $servers->setValue('login', 'auth_type', 'session');
-$servers->setValue('server', 'tls', false);
+$servers->setValue('server', 'tls', isset($_SERVER["PHPLDAPADMIN_USE_TLS"]));
 
 // get env vars configuration if available
 $servers->setValue('server', 'name', isset($_SERVER["PHPLDAPADMIN_NAME"]) ? $_SERVER["PHPLDAPADMIN_NAME"] : 'My LDAP Server');
